@@ -1,33 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+
 import './App.css'
-
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import  Location from './components/Location'
+import ResidentInfo from './components/ResidentInfo'
 function App() {
-  const [count, setCount] = useState(0)
+ 
+  const [idRandom, setIdRandom] = useState (1)
+  const [residentsArray, setResidentsArray] = useState([])
+  const [locationObjt, setLocationObjt] = useState({})
+  const generateRandomNumber = () => {
+    const numberRandom = Math.floor(Math.random(1) * 126)
+    setIdRandom (numberRandom)
+  }
 
+  useEffect ( () => {
+
+    axios
+      .get(" https://rickandmortyapi.com/api/location ")
+      .then ( resp => setResidentsArray(resp.data?.results[idRandom]?.residents) )
+      .catch ( error => console.error( error ) )
+    axios 
+      .get ("https://rickandmortyapi.com/api/location")
+      .then (resp2 => setLocationObjt(resp2.data?.results[idRandom]) )
+      .catch (error => console.error(error))
+
+  }, [])
+console.log(idRandom)
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+        <div className='logo-div'><img className='logotype' src='./src/assets/logo.svg' /></div>
+        <div> 
+          <Location 
+            locationData = {locationObjt}
+          />  
+        </div>
+        <ul className='cards'>
+        {
+          residentsArray.map( resident => (
+          <ResidentInfo
+          key={resident}  
+          residentData = {resident}
+          />  
+          ) )
+        } 
+        </ul>
+        
+    </div> 
   )
 }
 
