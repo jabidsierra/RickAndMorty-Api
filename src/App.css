@@ -4,12 +4,37 @@
   padding: 2rem;
   text-align: center;
 }
-
+.Search{
+  background-color: #0cff7900;
+  padding: 2.5%;
+}
+.search-input{
+  width: 637px;
+  border-radius: 5px;
+  border: 0px;
+  padding: 15px;
+  color: #ffffff;
+  height: 25px;
+  background-color: #00cc5c34;
+}
 .card-resident-info{
   background-color: #88888800;
   width: 437px;
   height: 238px;
 
+}
+
+.search-button{
+  width: 115px;
+  height: 60px;
+  border: none;
+  border-radius: 15%;
+  stroke: #8EFF8B;
+  background-color: rgba(142, 255, 139, 0.5);
+}
+.search-button:hover{
+  fill: #8eff8b;
+  background-color:#8eff8b ;
 }
 .card-resident-info-items{
 

@@ -27,7 +27,7 @@ const ResidentInfo = ( {residentData} ) => {
                 <ul className="card-resident-info-items">
                     <li>Especie: <span>{info.species}</span> </li>
                     <li>Origen: <span>{info.origin?.name}</span> </li>
-                    <li>Apariciones: <span>Ejemplo de apariciones</span> </li>
+                    <li>Apariciones: <span>{info.episode?.length} veces</span> </li>
                 </ul>
             </div>        
         
