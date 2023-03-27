@@ -38,7 +38,7 @@ function App() {
   console.log(residentsArray)
   return (
     <div className="App">
-        <div className='logo-div'><img className='logotype' src='./src/assets/logo.svg' /></div>
+       
         <div className='Search'> <input className='search-input' type="text" placeholder='Escribe el nombre de una locación' value={searchLoc} onChange={(e) => setSearchLoc(e.target.value)} />
         <button className='search-button' onClick={search}>Buscar</button>
         </div>
